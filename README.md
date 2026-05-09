@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AptureTech — Web & App Design Agency
+
+Premium web & app design and development agency website built with Next.js 15, Tailwind CSS v4, and TypeScript.
+
+## Tech Stack
+
+- **Framework:** Next.js 15 (App Router)
+- **Styling:** Tailwind CSS v4 + CSS custom properties
+- **Language:** TypeScript
+- **Icons:** Lucide React
+- **Fonts:** Barlow Condensed + Inter (Google Fonts)
+- **Deploy:** Vercel
+
+## Pages
+
+| Route          | Description                                                                                       |
+| -------------- | ------------------------------------------------------------------------------------------------- |
+| `/`            | Home — Hero, Services, About, Stats, Newsletter, Portfolio, Why Us, Testimonials, Team, Blog, CTA |
+| `/about`       | About Us — Team, Values, Stats                                                                    |
+| `/services`    | Services — Full grid + 6-step process                                                             |
+| `/portfolio`   | Projects — Full portfolio grid                                                                    |
+| `/blog`        | Blog — Featured post + grid                                                                       |
+| `/blog/[slug]` | Blog post detail                                                                                  |
+| `/contact`     | Contact — Form + contact info                                                                     |
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy to Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Option 1 — Vercel CLI
 
-## Learn More
+```bash
+npm i -g vercel
+vercel
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Option 2 — GitHub → Vercel Dashboard
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Push this project to a GitHub repository
+2. Go to [vercel.com](https://vercel.com) → **New Project**
+3. Import your GitHub repo
+4. Vercel auto-detects Next.js — click **Deploy**
+5. Done! Your site is live.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+No extra configuration needed — `vercel.json` is not required for standard Next.js 15 projects.
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+apturetech/
+├── app/
+│   ├── globals.css          # CSS variables + Tailwind v4
+│   ├── layout.tsx           # Root layout (fonts, Navbar, Footer)
+│   ├── page.tsx             # Home page
+│   ├── not-found.tsx        # 404 page
+│   ├── about/page.tsx
+│   ├── services/page.tsx
+│   ├── portfolio/page.tsx
+│   ├── blog/
+│   │   ├── page.tsx
+│   │   └── [slug]/page.tsx
+│   └── contact/page.tsx
+├── components/
+│   ├── layout/
+│   │   ├── Navbar.tsx
+│   │   └── Footer.tsx
+│   ├── sections/            # All homepage sections
+│   └── ui/                  # Button, SectionHeader, ThemeToggle
+├── lib/
+│   ├── data.ts              # Site content / mock data
+│   └── theme.tsx            # Dark/light theme context
+├── package.json
+├── next.config.ts
+├── postcss.config.mjs
+└── tsconfig.json
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Customisation
+
+All site content lives in `lib/data.ts` — update `siteConfig`, `services`, `portfolio`, `team`, `testimonials`, and `blogPosts` to make it yours.
+
+Colors and fonts are defined as CSS custom properties in `app/globals.css`.
